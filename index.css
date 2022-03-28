@@ -9,7 +9,7 @@ body {
 
 #quote-box {
   background-color: white;
-  width: 450px;
+  width: 550px;
   padding: 40px 50px;
   border-radius: 3px;
   padding: 40px 50px;
@@ -19,7 +19,26 @@ body {
   text-align: center;
 }
 
+#text {
+  font-weight: 500;
+  font-size: 1.75em;
+}
+
+#author {
+  justify-content: flex-end;
+}
+
 #text,
 #author {
   color: red;
+}
+
+#tweet-quote,
+#twitter-quote {
+  margin-right: 2px;
+  min-width: 42px;
+}
+
+#new-quote {
+  margin-left: auto;
 }
