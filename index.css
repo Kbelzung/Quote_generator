@@ -1,10 +1,14 @@
+:root {
+  --main-color: red;
+}
+
 html {
   height: 100%;
 }
 
 body {
   height: 100%;
-  background-color: green !important;
+  background-color: var(--main-color) !important;
 }
 
 #quote-box {
@@ -15,7 +19,8 @@ body {
   padding: 40px 50px;
 }
 
-#text {
+#text,
+#quote-mark {
   text-align: center;
 }
 
@@ -28,9 +33,10 @@ body {
   justify-content: flex-end;
 }
 
+#quote-mark,
 #text,
 #author {
-  color: red;
+  color: var(--main-color);
 }
 
 #tweet-quote,
