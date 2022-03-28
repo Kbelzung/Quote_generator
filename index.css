@@ -8,6 +8,9 @@ html {
 
 body {
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--main-color) !important;
 }
 
@@ -17,20 +20,26 @@ body {
   padding: 40px 50px;
   border-radius: 3px;
   padding: 40px 50px;
+  column-gap: 25px;
 }
 
-#text,
-#quote-mark {
-  text-align: center;
+#quote-box > div {
+  margin-top: 25px;
 }
 
 #text {
+  text-align: center;
   font-weight: 500;
   font-size: 1.75em;
 }
 
 #author {
   justify-content: flex-end;
+}
+
+#author,
+#social-row {
+  display: flex;
 }
 
 #quote-mark,
@@ -47,4 +56,8 @@ body {
 
 #new-quote {
   margin-left: auto;
+}
+
+#social-row {
+  margin-top: 25px;
 }
