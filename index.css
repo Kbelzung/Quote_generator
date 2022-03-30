@@ -2,12 +2,14 @@
   --main-color: red;
 }
 
-html {
+html,
+body,
+#app {
   height: 100%;
+  width: 100%;
 }
 
-body {
-  height: 100%;
+#app {
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,10 +1,33 @@
 class Quotebox extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      quoteText: null,
+      author: null,
+    };
+  }
+
+  componentDidMount() {
+    fetch("https://zenquotes.io/api/quotes")
+      .then((res) => res.json())
+      .then((data) => {
+        let randomNumber = Math.floor(Math.random() * 48);
+        this.setState({
+          quoteText: data[randomNumber].q,
+          author: data[randomNumber].a,
+        });
+      });
+  }
+
   render() {
     return (
       <div id="quote-box">
-        <div id="text"></div>
+        <div id="text">
+          <i id="quote-mark" class="fa fa-quote-left"></i>{" "}
+          {this.state.quoteText}
+        </div>
         <div id="author">
-          <p className="ms-auto fs-5">- Latin Proverb</p>
+          <p className="ms-auto fs-5">{this.state.author}</p>
         </div>
         <div id="social-row">
           <button

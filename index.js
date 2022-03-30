@@ -1,12 +1,3 @@
-fetch("https://zenquotes.io/api/quotes")
-  .then((res) => res.json())
-  .then((data) => {
-    let randomNumber = Math.floor(Math.random() * 48);
-    document.getElementById("text").innerHTML =
-      '<i id="quote-mark" class="fa fa-quote-left"></i>' + data[randomNumber].q;
-    document.getElementById("author").innerHTML = data[randomNumber].a;
-  });
-
 var colors = [
   "#16a085",
   "#27ae60",
@@ -23,5 +14,4 @@ var colors = [
 ];
 
 var color = Math.floor(Math.random() * colors.length);
-
 document.documentElement.style.setProperty("--main-color", colors[color]);

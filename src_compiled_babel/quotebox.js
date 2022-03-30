@@ -9,26 +9,53 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Quotebox = function (_React$Component) {
   _inherits(Quotebox, _React$Component);
 
-  function Quotebox() {
+  function Quotebox(props) {
     _classCallCheck(this, Quotebox);
 
-    return _possibleConstructorReturn(this, (Quotebox.__proto__ || Object.getPrototypeOf(Quotebox)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Quotebox.__proto__ || Object.getPrototypeOf(Quotebox)).call(this, props));
+
+    _this.state = {
+      quoteText: null,
+      author: null
+    };
+    return _this;
   }
 
   _createClass(Quotebox, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("https://zenquotes.io/api/quotes").then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        var randomNumber = Math.floor(Math.random() * 48);
+        _this2.setState({
+          quoteText: data[randomNumber].q,
+          author: data[randomNumber].a
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement(
         "div",
         { id: "quote-box" },
-        React.createElement("div", { id: "text" }),
+        React.createElement(
+          "div",
+          { id: "text" },
+          React.createElement("i", { id: "quote-mark", "class": "fa fa-quote-left" }),
+          " ",
+          this.state.quoteText
+        ),
         React.createElement(
           "div",
           { id: "author" },
           React.createElement(
             "p",
             { className: "ms-auto fs-5" },
-            "- Latin Proverb"
+            this.state.author
           )
         ),
         React.createElement(
