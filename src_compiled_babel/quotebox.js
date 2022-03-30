@@ -20,6 +20,8 @@ var Quotebox = function (_React$Component) {
     };
 
     _this.updateQuote = _this.updateQuote.bind(_this);
+    _this.sendQuoteTwitter = _this.sendQuoteTwitter.bind(_this);
+    _this.sendQuoteTumblr = _this.sendQuoteTumblr.bind(_this);
     return _this;
   }
 
@@ -47,6 +49,16 @@ var Quotebox = function (_React$Component) {
 
       var color = Math.floor(Math.random() * colors.length);
       document.documentElement.style.setProperty("--main-color", colors[color]);
+    }
+  }, {
+    key: "sendQuoteTwitter",
+    value: function sendQuoteTwitter() {
+      window.location.href = "https://twitter.com/intent/tweet?hashtags=quotes&text=" + encodeURIComponent('"' + this.state.quoteText + '" ' + this.state.author);
+    }
+  }, {
+    key: "sendQuoteTumblr",
+    value: function sendQuoteTumblr() {
+      window.location.href = "https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes&caption=" + encodeURIComponent(this.state.quoteText) + "&content=" + encodeURIComponent(this.state.author) + "&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button";
     }
   }, {
     key: "render",
@@ -78,13 +90,19 @@ var Quotebox = function (_React$Component) {
             {
               id: "tweet-quote",
               type: "button",
-              className: "btn btn-primary me-1"
+              className: "btn btn-primary me-1",
+              onClick: this.sendQuoteTwitter
             },
             React.createElement("i", { className: "fa fa-twitter" })
           ),
           React.createElement(
             "button",
-            { id: "twitter-quote", type: "button", className: "btn btn-primary" },
+            {
+              id: "tumblr-quote",
+              type: "button",
+              className: "btn btn-primary",
+              onClick: this.sendQuoteTumblr
+            },
             React.createElement("i", { className: "fa-brands fa-tumblr" })
           ),
           React.createElement(

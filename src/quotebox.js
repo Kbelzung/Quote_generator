@@ -7,6 +7,8 @@ class Quotebox extends React.Component {
     };
 
     this.updateQuote = this.updateQuote.bind(this);
+    this.sendQuoteTwitter = this.sendQuoteTwitter.bind(this);
+    this.sendQuoteTumblr = this.sendQuoteTumblr.bind(this);
   }
 
   componentDidMount() {
@@ -43,6 +45,21 @@ class Quotebox extends React.Component {
     document.documentElement.style.setProperty("--main-color", colors[color]);
   }
 
+  sendQuoteTwitter() {
+    window.location.href =
+      "https://twitter.com/intent/tweet?hashtags=quotes&text=" +
+      encodeURIComponent('"' + this.state.quoteText + '" ' + this.state.author);
+  }
+
+  sendQuoteTumblr() {
+    window.location.href =
+      "https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes&caption=" +
+      encodeURIComponent(this.state.quoteText) +
+      "&content=" +
+      encodeURIComponent(this.state.author) +
+      "&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button";
+  }
+
   render() {
     return (
       <div id="quote-box">
@@ -58,10 +75,16 @@ class Quotebox extends React.Component {
             id="tweet-quote"
             type="button"
             className="btn btn-primary me-1"
+            onClick={this.sendQuoteTwitter}
           >
             <i className="fa fa-twitter"></i>
           </button>
-          <button id="twitter-quote" type="button" className="btn btn-primary">
+          <button
+            id="tumblr-quote"
+            type="button"
+            className="btn btn-primary"
+            onClick={this.sendQuoteTumblr}
+          >
             <i className="fa-brands fa-tumblr"></i>
           </button>
           <button
