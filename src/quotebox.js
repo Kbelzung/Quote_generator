@@ -5,9 +5,15 @@ class Quotebox extends React.Component {
       quoteText: null,
       author: null,
     };
+
+    this.updateQuote = this.updateQuote.bind(this);
   }
 
   componentDidMount() {
+    this.updateQuote();
+  }
+
+  updateQuote() {
     fetch("https://zenquotes.io/api/quotes")
       .then((res) => res.json())
       .then((data) => {
@@ -17,13 +23,31 @@ class Quotebox extends React.Component {
           author: data[randomNumber].a,
         });
       });
+
+    var colors = [
+      "#16a085",
+      "#27ae60",
+      "#2c3e50",
+      "#f39c12",
+      "#e74c3c",
+      "#9b59b6",
+      "#FB6964",
+      "#342224",
+      "#472E32",
+      "#BDBB99",
+      "#77B1A9",
+      "#73A857",
+    ];
+
+    var color = Math.floor(Math.random() * colors.length);
+    document.documentElement.style.setProperty("--main-color", colors[color]);
   }
 
   render() {
     return (
       <div id="quote-box">
         <div id="text">
-          <i id="quote-mark" class="fa fa-quote-left"></i>{" "}
+          <i id="quote-mark" className="fa fa-quote-left"></i>{" "}
           {this.state.quoteText}
         </div>
         <div id="author">
@@ -44,6 +68,7 @@ class Quotebox extends React.Component {
             id="new-quote"
             type="button"
             className="btn btn-primary ms-auto"
+            onClick={this.updateQuote}
           >
             New Quote
           </button>

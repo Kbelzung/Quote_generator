@@ -20,14 +20,6 @@ var App = function (_React$Component) {
   }
 
   _createClass(App, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var colors = ["#16a085", "#27ae60", "#2c3e50", "#f39c12", "#e74c3c", "#9b59b6", "#FB6964", "#342224", "#472E32", "#BDBB99", "#77B1A9", "#73A857"];
-
-      var color = Math.floor(Math.random() * colors.length);
-      document.documentElement.style.setProperty("--main-color", colors[color]);
-    }
-  }, {
     key: "render",
     value: function render() {
       return React.createElement(Quotebox, null);

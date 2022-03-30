@@ -18,12 +18,19 @@ var Quotebox = function (_React$Component) {
       quoteText: null,
       author: null
     };
+
+    _this.updateQuote = _this.updateQuote.bind(_this);
     return _this;
   }
 
   _createClass(Quotebox, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      this.updateQuote();
+    }
+  }, {
+    key: "updateQuote",
+    value: function updateQuote() {
       var _this2 = this;
 
       fetch("https://zenquotes.io/api/quotes").then(function (res) {
@@ -35,6 +42,11 @@ var Quotebox = function (_React$Component) {
           author: data[randomNumber].a
         });
       });
+
+      var colors = ["#16a085", "#27ae60", "#2c3e50", "#f39c12", "#e74c3c", "#9b59b6", "#FB6964", "#342224", "#472E32", "#BDBB99", "#77B1A9", "#73A857"];
+
+      var color = Math.floor(Math.random() * colors.length);
+      document.documentElement.style.setProperty("--main-color", colors[color]);
     }
   }, {
     key: "render",
@@ -45,7 +57,7 @@ var Quotebox = function (_React$Component) {
         React.createElement(
           "div",
           { id: "text" },
-          React.createElement("i", { id: "quote-mark", "class": "fa fa-quote-left" }),
+          React.createElement("i", { id: "quote-mark", className: "fa fa-quote-left" }),
           " ",
           this.state.quoteText
         ),
@@ -80,7 +92,8 @@ var Quotebox = function (_React$Component) {
             {
               id: "new-quote",
               type: "button",
-              className: "btn btn-primary ms-auto"
+              className: "btn btn-primary ms-auto",
+              onClick: this.updateQuote
             },
             "New Quote"
           )
