@@ -15,26 +15,19 @@
       src="https://kit.fontawesome.com/26cb8c3b6c.js"
       crossorigin="anonymous"
     ></script>
-    <script src="index.js"></script>
     <title>Document</title>
   </head>
   <body>
-    <div id="quote-box">
-      <div id="text"></div>
-      <div id="author">
-        <p class="ms-auto fs-5">- Latin Proverb</p>
-      </div>
-      <div id="social-row">
-        <button id="tweet-quote" type="button" class="btn btn-primary me-1">
-          <i class="fa fa-twitter"></i>
-        </button>
-        <button id="twitter-quote" type="button" class="btn btn-primary">
-          <i class="fa-brands fa-tumblr"></i>
-        </button>
-        <button id="new-quote" type="button" class="btn btn-primary ms-auto">
-          New Quote
-        </button>
-      </div>
-    </div>
+    <div id="app"></div>
+
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script type="module" src="./lib/app.js"></script>
   </body>
 </html>
