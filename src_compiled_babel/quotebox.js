@@ -22,6 +22,7 @@ var Quotebox = function (_React$Component) {
     _this.updateQuote = _this.updateQuote.bind(_this);
     _this.sendQuoteTwitter = _this.sendQuoteTwitter.bind(_this);
     _this.sendQuoteTumblr = _this.sendQuoteTumblr.bind(_this);
+    _this.copyQuote = _this.copyQuote.bind(_this);
     return _this;
   }
 
@@ -61,6 +62,15 @@ var Quotebox = function (_React$Component) {
       window.location.href = "https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes&caption=" + encodeURIComponent(this.state.quoteText) + "&content=" + encodeURIComponent(this.state.author) + "&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button";
     }
   }, {
+    key: "copyQuote",
+    value: function copyQuote() {
+      /* Copy the text inside the text field */
+      navigator.clipboard.writeText(this.state.quoteText + " - " + this.state.author);
+
+      /* Alert the copied text */
+      alert("Copied the text: " + this.state.quoteText + " - " + this.state.author);
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement(
@@ -85,6 +95,16 @@ var Quotebox = function (_React$Component) {
         React.createElement(
           "div",
           { id: "social-row" },
+          React.createElement(
+            "button",
+            {
+              id: "copy-quote",
+              type: "button",
+              className: "btn btn-primary me-1",
+              onClick: this.copyQuote
+            },
+            React.createElement("i", { "class": "fa-solid fa-copy" })
+          ),
           React.createElement(
             "button",
             {

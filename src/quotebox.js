@@ -9,6 +9,7 @@ class Quotebox extends React.Component {
     this.updateQuote = this.updateQuote.bind(this);
     this.sendQuoteTwitter = this.sendQuoteTwitter.bind(this);
     this.sendQuoteTumblr = this.sendQuoteTumblr.bind(this);
+    this.copyQuote = this.copyQuote.bind(this);
   }
 
   componentDidMount() {
@@ -60,6 +61,18 @@ class Quotebox extends React.Component {
       "&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button";
   }
 
+  copyQuote() {
+    /* Copy the text inside the text field */
+    navigator.clipboard.writeText(
+      this.state.quoteText + " - " + this.state.author
+    );
+
+    /* Alert the copied text */
+    alert(
+      "Copied the text: " + this.state.quoteText + " - " + this.state.author
+    );
+  }
+
   render() {
     return (
       <div id="quote-box">
@@ -71,6 +84,14 @@ class Quotebox extends React.Component {
           <p className="ms-auto fs-5">{this.state.author}</p>
         </div>
         <div id="social-row">
+          <button
+            id="copy-quote"
+            type="button"
+            className="btn btn-primary me-1"
+            onClick={this.copyQuote}
+          >
+            <i class="fa-solid fa-copy"></i>
+          </button>
           <button
             id="tweet-quote"
             type="button"

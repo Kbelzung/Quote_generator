@@ -50,6 +50,7 @@ body,
   color: var(--main-color);
 }
 
+#copy-quote,
 #tweet-quote,
 #tumblr-quote {
   margin-right: 2px;
